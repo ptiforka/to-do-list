@@ -42,6 +42,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'rack-cors'
 
 group :development do
+  gem 'annotate'
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.65.0', require: false
   gem 'rubocop-rspec'
@@ -53,6 +54,7 @@ group :test do
   gem 'airborne'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
