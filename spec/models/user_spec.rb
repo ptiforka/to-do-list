@@ -18,7 +18,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'validates' do
+  describe 'validates' do
     let!(:user) { create :user }
 
     it { is_expected.to validate_presence_of(:username) }
@@ -27,5 +27,9 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of(:username) }
 
     it { is_expected.to validate_length_of(:username).is_at_least(3).is_at_most(50) }
+  end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:projects) }
   end
 end

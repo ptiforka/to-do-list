@@ -19,3 +19,24 @@ RSpec.shared_examples 'validate errors' do |key, errors|
     expect_json("errors.#{key}", errors)
   end
 end
+
+RSpec.shared_examples 'index example' do |size = 5|
+  it "returns #{size} resource" do
+    subject
+    expect_json_sizes(resources: size)
+  end
+end
+
+RSpec.shared_examples 'validate resource types' do |data_types|
+  it 'is valid' do
+    subject
+    expect_json_types('resource', *data_types)
+  end
+end
+
+RSpec.shared_examples 'bulk update' do |updated_parameters|
+  it 'updates successfully' do
+    subject
+    expect(json_body[:resource].slice(*updated_parameters)).to eq(model_params.slice(*updated_parameters))
+  end
+end
