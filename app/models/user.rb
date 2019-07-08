@@ -22,6 +22,8 @@ class User < ApplicationRecord
 
   attr_writer :login
 
+  has_many :projects, dependent: :destroy
+
   validates :username, uniqueness: true, presence: true, length: { in: 3..50 }, format: /\A[a-zA-Z0-9_\.]*\z/
 
   private
